@@ -16,25 +16,32 @@ import mg.itu.tpcustomerramavo.entities.Customer;
  *
  * @author Ny Aina Rafaly
  */
+/**
+ * Backing bean pour la page CustomerList.
+ */
 @Named(value = "customerBean")
 @ViewScoped
 public class CustomerBean implements Serializable {
-
-   private List<Customer> customerList;  
+  private List<Customer> customers;
 
   @EJB
-  private CustomerManager customerManager;  
-        
-  public CustomerBean() {  }  
-        
-  /** 
-   * Retourne la liste des clients pour affichage dans une DataTable.
-     * @return 
-   */  
-  public List<Customer> getCustomers() {
-    if (customerList == null) {
-      customerList = customerManager.getAllCustomers();
-    }
-    return customerList;
+  private CustomerManager customerManager;
+
+  /**
+   * Creates a new instance of CustomerMBean
+   */
+  public CustomerBean() {
   }
+
+  /** 
+  * Renvoie la liste des clients pour affichage dans une DataTable 
+  * @return 
+  */  
+  public List<Customer> getCustomers() {
+    if (customers == null) {
+      customers = customerManager.getAllCustomers();
+    }
+    return customers;  
+  }  
+  
 }
