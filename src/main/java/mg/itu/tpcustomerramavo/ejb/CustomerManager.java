@@ -24,6 +24,10 @@ public class CustomerManager {
        Query query = em.createNamedQuery("Customer.findAll");
        return query.getResultList();
     }
+    
+    public Customer findById(int idCustomer) {  
+        return em.find(Customer.class, idCustomer);  
+    }
 
     public Customer update(Customer customer) {
        return em.merge(customer);
